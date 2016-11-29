@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "es2015-node6/object-rest",
+    "stage-0"
+  ],
+  "sourceMaps": "inline",
+  "retainLines": true,
+  "plugins": [["annotate-console-log", {"scriptPath": true}]],
+  "env": {
+    "test": { "plugins": [ "rewire" ] }
+  }
+}

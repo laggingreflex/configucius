@@ -1,0 +1,13 @@
+--check-leaks
+--compilers js:babel-register
+--require source-map-support/register
+--require require-up/register
+--require tests/_/first.js
+--cache-dir coverage/.cache
+--reporter spec
+-d
+src/**/test/*.js
+src/**/*.test.js
+tests/**/*.js
+!tests/_/**
+!tests/fixtures/**
