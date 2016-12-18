@@ -4,8 +4,12 @@
 --require require-up/register
 --require tests/_/first.js
 --cache-dir coverage/.cache
+--bail
+--all
 --reporter spec
--d
+--report lcov
+# -dvvv
+-w
 src/**/test/*.js
 src/**/*.test.js
 tests/**/*.js

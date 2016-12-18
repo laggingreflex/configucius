@@ -3,9 +3,12 @@
     "es2015-node6/object-rest",
     "stage-0"
   ],
-  "sourceMaps": "inline",
-  "retainLines": true,
-  "plugins": [["annotate-console-log", {"scriptPath": true}]],
+  "plugins": [
+    // ["annotate-console-log", {"scriptPath": true}],
+    ["transform-export-default-name", {}]
+  ],
+  "sourceMaps": true,
+  // "retainLines": true,
   "env": {
     "test": { "plugins": [ "rewire" ] }
   }

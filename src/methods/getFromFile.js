@@ -1,4 +1,9 @@
-export default function (setting) {
+import { keyPick } from '../utils'
+
+export default function () {
   const config = this
-  return config.file[setting]
+  return keyPick({
+    args: arguments,
+    source: config.configFileContents
+  })
 }

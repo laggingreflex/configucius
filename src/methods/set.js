@@ -2,11 +2,19 @@ import _ from 'lodash'
 
 export default function (key, value) {
   const config = this
+
+  if (typeof value === 'undefined') {
+    /* Please use `unset()` to unset a key */ throw new
+    Error(`Need a value to set: set(${key}, <value>).`)
+  }
+
   const opt = _.get(config, `options.${key}`)
   if (opt) {
     if (
       (!opt.type) ||
       (opt.type === typeof value) ||
+      (opt.type === 'input' && _.isString(value)) ||
+      (opt.type === 'password' && _.isString(value)) ||
       (opt.type === 'boolean' && _.isBoolean(value)) ||
       (opt.type === 'array' && _.isArray(value))
     ) {

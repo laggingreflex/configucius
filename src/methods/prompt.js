@@ -1,14 +1,20 @@
 import _ from 'lodash'
 import { prompt } from '../utils'
+import ority from 'ority'
 
-export default async function (setting, promptOpts) {
+export default async function () {
   const config = this
   const opts = config.opts
   let options = opts.options
-  if (_.isPlainObject(setting)) {
-    promptOpts = setting
-    setting = promptOpts.setting
-  }
+
+  let { setting, promptOpts } = ority(arguments, [{
+    setting: 'string'
+  }, {
+    promptOpts: 'object'
+  }, {
+    setting: 'string',
+    promptOpts: 'object'
+  }, {}])
   promptOpts = promptOpts || {}
 
   if (_.isString(setting) || _.isArray(setting)) {
@@ -19,19 +25,23 @@ export default async function (setting, promptOpts) {
         return true
       } else if (promptOpts.missing && !config.get(key)) {
         return true
-      } else if (opt.prompt) {
+      } else if (opt.prompt && !promptOpts.missing) {
         return true
       }
     })
   }
 
+  const ret = {}
   for (const key in options) {
     const opt = options[key]
-    const message = _.isString(opt.prompt) && opt.prompt || opt.description || opt.message || _.capitalize(_.startCase(key).toLowerCase())
+    const message = opt.message || opt.description || _.isString(opt.prompt) && opt.prompt || _.capitalize(_.startCase(key).toLowerCase())
     const method = opt.type === 'boolean' ? 'confirm'
       : opt.type === 'password' ? 'password'
       : 'input'
     const answer = await prompt[method](message, opt.default)
+    ret[key] = answer
     config.set(key, answer)
   }
+
+  return ret
 }

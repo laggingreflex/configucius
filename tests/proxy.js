@@ -1,6 +1,6 @@
 import Config from '../src'
 
-describe.only('proxy', () => {
+describe('proxy', () => {
   describe('get', () => {
     it('for a setting of the same name, it should get the property', async() => {
       const config = new Config()
@@ -14,18 +14,19 @@ describe.only('proxy', () => {
       config.a.should.equal('a')
     })
   })
-  describe.only('set', () => {
+  describe('set', () => {
     it('should set a setting if its defined in options', async() => {
       const config = new Config({ options: { a: {} } })
-      config.a = 'a';
-      (typeof config.a).should.equal('undefined')
+      config.a = 'a'
+      config.should.not.have.a.property('a')
       config.get('a').should.equal('a')
     })
     it('should set a direct key if its not defined in options', async() => {
       const config = new Config()
       config.a = 'a'
-      config.should.have.a.property('a');
-      (typeof config.get('a')).should.equal('undefined')
+      config.should.have.a.property('a')
+      const a = typeof config.get('a')
+      a.should.equal('undefined')
     })
   })
 })

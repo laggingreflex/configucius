@@ -1,14 +1,14 @@
 import arrify from 'arrify'
+import _ from 'lodash'
+import { keyPick } from '../utils'
 
-export default function (setting) {
+export default function () {
   const config = this
-  const args = config.args
-  const opts = config.opts
-  const opt = opts[setting] || {}
-  const aliases = arrify(opt.alias)
-  for (const alias in aliases) {
-    if (args[alias]) {
-      return args[alias]
-    }
-  }
+  return keyPick({
+    args: arguments,
+    source: config.args,
+    pickBy: (value, key) =>
+      typeof value !== 'undefined' &&
+      arrify(_.get(config, `opts.${key}.alias`)).indexOf(key) === -1
+  })
 }

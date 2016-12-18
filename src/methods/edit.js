@@ -7,7 +7,7 @@ export default async function () {
     const passedArgs = Object.keys(config.args).filter(arg => !isEmpty(config.args[arg]) && Object.keys(config).includes(arg))
     if (passedArgs.length) {
       for (const arg of passedArgs) {
-        await config.editOne(arg); // eslint-disable-line
+        config.promise = await config.editOne(arg); // eslint-disable-line
       }
       await config.saveToFile()
       return
