@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { prompt } from '../utils'
+import * as prompt from '../utils/prompt'
 import ority from 'ority'
 
 export default async function () {

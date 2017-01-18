@@ -4,7 +4,7 @@
   "description": "config loader",
   "main": "dist",
   "scripts": {
-    "build": "rimraf dist && babel src -d dist",
+    "build": "rimraf dist && babel src -d dist --source-maps",
     "lint": "eslint src tests",
     "test": "NODE_ENV=test mochista --opts tests/_/mocha.opts",
     "watch": "run-p \"build -- {@}\" \"test -- {@}\" -- \"--watch\"",

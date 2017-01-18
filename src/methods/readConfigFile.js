@@ -34,17 +34,23 @@ export default function () {
     if (opts.silent || opts.silentReadFail) {
       return
     } else {
-      return error.throwWithMsg(`Couldn't read from {configFile: ${configFile}}: `, err)
+      err.message = `Couldn't read from {configFile: ${configFile}}: ` + err.message
+      /* Config file doesn't exist but was forced to be read */ throw err
     }
   }
-  try {
-    json = JSON.parse(raw)
-  } catch (err) {
-    if (opts.silent || opts.silentParseFail) {
-      return
-    } else {
-      return error.throwWithMsg(`Couldn't parse JSON from {configFile: ${configFile}}: `, err, {raw})
+  if (raw.length) {
+    try {
+      json = JSON.parse(raw)
+    } catch (err) {
+      if (opts.silent || opts.silentParseFail) {
+        return
+      } else {
+        err.message = `Couldn't parse JSON from {configFile: ${configFile}}: ` + err.message
+        /* Non-empty config file contains invalid JSON */ throw err
+      }
     }
+  } else {
+    console.warn('warning: empty config file, using "{}"')
   }
 
   if (opts.replace) {

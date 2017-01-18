@@ -3,9 +3,8 @@ import readPkgUp from 'read-pkg-up'
 let parentPkg
 try {
   parentPkg = readPkgUp.sync(module.parent.parent.filename).pkg
-} catch (noop) {
-  parentPkg = {}
-}
+} catch (noop) {}
+parentPkg = parentPkg || {}
 
 const defaults = {}
 
@@ -24,7 +23,7 @@ defaults.configFile = {
   type: 'string'
 }
 defaults.editConfig = {
-  type: 'string'
+  type: 'boolean'
 }
 
 defaults.verbose = {

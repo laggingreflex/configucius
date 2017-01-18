@@ -1,34 +1,57 @@
 import _ from 'lodash'
-import { keyPick } from '../utils'
+import ority from 'ority'
+import {
+  keyPick,
+  omitUndefined,
+  returnFirstDefined
+} from '../utils'
 
-export default function (key) {
+export default function (..._args) {
+  let { key, opts } = ority(_args, [{
+    key: ['string'],
+    opts: 'object'
+  }, {
+    key: ['string']
+  }, {
+    opts: 'object'
+  }, {}])
+  opts = opts || {}
+
   const config = this
 
+  let defaults
+  if (opts.includeDefaults !== false) {
+    defaults = config.getFromDefaults(...arguments)
+  }
+  const file = config.getFromFile(...arguments)
+  const env = config.getFromEnv(...arguments)
+  const args = config.getFromArgs(...arguments)
+
+  let result
+
   if (typeof key === 'string') {
-    return returnFirstDefined(
-      config.getFromEnv(...arguments),
-      config.getFromFile(...arguments),
-      config.getFromArgs(...arguments),
+    result = returnFirstDefined([
+      defaults,
+      file,
+      env,
+      args,
       config.config[key]
-    )
+    ].reverse())
   } else {
-    return keyPick({
+    const merged = _.extend({},
+      omitUndefined(defaults || {}),
+      omitUndefined(file),
+      omitUndefined(env),
+      omitUndefined(args),
+      config.config,
+    )
+    // console.log({ merged })
+    result = keyPick({
       args: arguments,
-      source: _.extend({},
-        config.getFromEnv(...arguments),
-        config.getFromFile(...arguments),
-        config.getFromArgs(...arguments),
-        config.config,
-      ),
+      source: merged,
       pickBy: (value, key) => !config.unsetKeys.includes(key)
     })
   }
-}
 
-function returnFirstDefined (...args) {
-  for (const arg of args) {
-    if (typeof arg !== 'undefined') {
-      return arg
-    }
-  }
+  return result
 }

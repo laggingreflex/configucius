@@ -1,12 +1,21 @@
 import _ from 'lodash'
 import fs from 'fs-promise'
 import deepEqual from 'deeper'
+import ority from 'ority'
 import { error, keyPick } from '../utils'
 
-export default async function (opts) {
-  const config = this
-
+export default async function (...args) {
+  let { key, opts } = ority(args, [{
+    key: ['string'],
+    opts: 'object'
+  }, {
+    key: ['string']
+  }, {
+    opts: 'object'
+  }, {}])
   opts = opts || {}
+
+  const config = this
 
   let configFile
   try {
@@ -17,7 +26,7 @@ export default async function (opts) {
 
   let contents = keyPick({
     args: arguments,
-    source: config.get(...arguments),
+    source: config.get(key, { ...opts, includeDefaults: false }),
     pickBy: (opt, key) => _.get(config, `opts.options.${key}.save`)
   })
 
@@ -53,22 +62,25 @@ export default async function (opts) {
     const keys = []
     keys.push(..._.map(addedContent, (value, key) => '+' + key))
     keys.push(..._.map(deletedContent, (value, key) => '-' + key))
-    /* `saveStrict` prevents adding or removing keys from config */ throw new
+      /* `saveStrict` prevents adding or removing keys from config */
+    throw new
     Error(`Cannot save: newer config has [${unsigned}] ${label} keys than the original [${keys}]`)
   }
 
   if (deletedLength && previousLength && !(opts.saveLossy || config.opts.saveLossy)) {
-    /* To prevent accidental config wipe-out/loss. Set `saveLossy` to override */ throw new
+    /* To prevent accidental config wipe-out/loss. Set `saveLossy` to override */
+    throw new
     Error(`Cannot save: newer config has [${deletedLength}] fewer keys than original [${Object.keys(deletedContent)}]. Set 'saveLossy' to override`)
   }
 
   try {
     await fs.outputFile(configFile, JSON.stringify(contents, null, 2))
   } catch (error) {
-    /* There was an error saving settings to the specified `configFile` */ throw new
+    /* There was an error saving settings to the specified `configFile` */
+    throw new
     Error(`Couldn't save to file "${configFile}". ` + error.message)
   }
   config.configFileContents = contents
 
-  return {file: configFile, new: addedContent, previous: previousContents, deleted: deletedContent, changed: changedContent}
+  return { file: configFile, new: addedContent, previous: previousContents, deleted: deletedContent, changed: changedContent }
 }

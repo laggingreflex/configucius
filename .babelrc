@@ -7,8 +7,8 @@
     // ["annotate-console-log", {"scriptPath": true}],
     ["transform-export-default-name", {}]
   ],
-  "sourceMaps": true,
-  // "retainLines": true,
+  "sourceMaps": "inline",
+  "retainLines": true,
   "env": {
     "test": { "plugins": [ "rewire" ] }
   }
