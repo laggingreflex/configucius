@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import isNumberLike from 'is-number-like'
 
 export default function (key, value) {
   const config = this
@@ -19,6 +20,8 @@ export default function (key, value) {
       (opt.type === 'array' && _.isArray(value))
     ) {
       config.config[key] = value
+    } else if (opt.type === 'number' && isNumberLike(value)) {
+      config.config[key] = parseInt(value, 10)
     } else {
       throw new Error(`Expected value type "${opt.type}", got "${typeof value}" `)
     }

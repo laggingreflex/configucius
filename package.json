@@ -14,11 +14,12 @@
   "repository": "laggingreflex/configucius",
   "author": "laggingreflex",
   "dependencies": {
-    "auto-bind": "^0.1.0",
     "arrify": "^1.0.1",
+    "auto-bind": "^0.1.0",
     "deeper": "^2.1.0",
     "enquirer": "^0.4.1",
     "is-empty": "^1.0.0",
+    "is-number-like": "^1.0.7",
     "lodash": "^4.17.2",
     "ority": "^0.2.1",
     "prompt-confirm": "^0.2.1",
