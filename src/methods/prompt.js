@@ -23,6 +23,10 @@ export default async function () {
     options = _.pickBy(options, (opt, key) => {
       if (promptOpts.all) {
         return true
+      } else if (promptOpts.savable && opt.save) {
+        return true
+      } else if (promptOpts.promptable && opt.prompt) {
+        return true
       } else if (promptOpts.missing && !config.get(key)) {
         return true
       } else if (opt.prompt && !promptOpts.missing) {
