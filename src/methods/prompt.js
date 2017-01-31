@@ -42,7 +42,8 @@ export default async function () {
     const method = opt.type === 'boolean' ? 'confirm'
       : opt.type === 'password' ? 'password'
       : 'input'
-    const answer = await prompt[method](message, opt.default)
+    const defaultValue = config.get(key);
+    const answer = await prompt[method](message, defaultValue)
     ret[key] = answer
     config.set(key, answer)
   }
