@@ -26,7 +26,7 @@ export default async function (...args) {
 
   let contents = keyPick({
     args: arguments,
-    source: config.get(key, { ...opts, includeDefaults: false }),
+    source: config.get(...[key, { ...opts, includeDefaults: false }].filter(Boolean)),
     pickBy: (opt, key) => _.get(config, `opts.options.${key}.save`)
   })
 
