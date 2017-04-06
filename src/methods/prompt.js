@@ -8,11 +8,11 @@ export default async function () {
   let options = opts.options
 
   let { setting, promptOpts } = ority(arguments, [{
-    setting: 'string'
+    setting: ['string']
   }, {
     promptOpts: 'object'
   }, {
-    setting: 'string',
+    setting: ['string'],
     promptOpts: 'object'
   }, {}])
   promptOpts = promptOpts || {}
