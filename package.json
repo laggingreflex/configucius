@@ -20,6 +20,7 @@
     "enquirer": "^0.4.1",
     "is-empty": "^1.0.0",
     "is-number-like": "^1.0.7",
+    "json5": "^0.5.1",
     "lodash": "^4.17.2",
     "ority": "^0.2.1",
     "prompt-confirm": "^0.2.1",
