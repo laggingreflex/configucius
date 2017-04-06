@@ -22,7 +22,7 @@
     "is-number-like": "^1.0.7",
     "json5": "^0.5.1",
     "lodash": "^4.17.2",
-    "ority": "^0.2.1",
+    "ority": "^0.3.3",
     "prompt-confirm": "^0.2.1",
     "prompt-password": "^0.1.1",
     "untildify": "^3.0.2",
