@@ -2,7 +2,7 @@ import _ from 'lodash'
 import * as prompt from '../utils/prompt'
 import ority from 'ority'
 
-export default async function () {
+export default async function() {
   const config = this
   const opts = config.opts
   let options = opts.options
@@ -43,7 +43,19 @@ export default async function () {
       : opt.type === 'password' ? 'password'
       : 'input'
     const defaultValue = config.get(key);
-    const answer = await prompt[method](message, defaultValue)
+    let answer;
+    if (promptOpts.required) {
+      let retries = promptOpts.retries || 3;
+      while (!answer && retries--) {
+        answer = await prompt[method]('* ' + message, defaultValue);
+      }
+      if (!answer) {
+        /* {require:true} was used for this */ throw new
+        Error('Required option');
+      }
+    } else {
+      answer = await prompt[method](message, defaultValue)
+    }
     ret[key] = answer
     config.set(key, answer)
   }
