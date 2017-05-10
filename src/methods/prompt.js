@@ -70,8 +70,10 @@ export default async function() {
     } else {
       answer = await prompt[method](message, defaultValue)
     }
-    ret[key] = answer
-    config.set(key, answer)
+    if (answer !== undefined) {
+      ret[key] = answer
+      config.set(key, answer)
+    }
   }
 
   return ret

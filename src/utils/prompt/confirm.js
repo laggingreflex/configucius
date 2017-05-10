@@ -6,10 +6,15 @@ const enquirer = new Enquirer()
 enquirer.register('confirm', Confirm)
 
 export default async(message, def) => {
-  return (await enquirer.prompt({
+  const answer = (await enquirer.prompt({
     name: 'confirm',
     type: 'confirm',
     default: def || false,
     message: message + ':'
-  })).confirm
+  })).confirm;
+  if (!answer && def === undefined) {
+    return
+  } else {
+    return answer
+  }
 }
