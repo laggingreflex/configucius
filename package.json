@@ -1,6 +1,6 @@
 {
   "name": "configucius",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "config loader",
   "main": "dist",
   "scripts": {
@@ -12,7 +12,9 @@
     "index": "create-index src -ri --banner \"/* eslint-disable */\""
   },
   "files": [
-    "index.js", "src", "dist"
+    "index.js",
+    "src",
+    "dist"
   ],
   "repository": "laggingreflex/configucius",
   "author": "laggingreflex",
