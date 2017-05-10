@@ -19,7 +19,7 @@ export default async function (...args) {
 
   let configFile
   try {
-    configFile = config.getConfigFile()
+    configFile = opts.configFile || config.getConfigFile()
   } catch (err) {
     error.throwWithMsg(`Cannot save: `, err)
   }
