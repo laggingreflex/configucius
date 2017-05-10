@@ -17,9 +17,10 @@ const defaultHandler = {
 
 export default function (handler = defaultHandler) {
   if (typeof Proxy !== 'undefined' && !this.proxyEnabled) {
-    const config = new Proxy(this, handler)
-    config.proxyEnabled = true
-    return config
+    const proxy = new Proxy(this, handler)
+    this.proxy = proxy;
+    proxy.proxyEnabled = true
+    return proxy
   } else {
     return this
   }
