@@ -37,7 +37,18 @@ export default function (..._args) {
       args,
       config.config[key]
     ].reverse())
-  } else {
+  } else if (Array.isArray(key)) {
+    return key.reduce((ret, key) => ({
+      ...ret,
+      [key]: returnFirstDefined([
+        defaults,
+        file,
+        env,
+        args,
+        config.config[key]
+      ].reverse()),
+    }), {});
+  } else if (!key) {
     const merged = _.extend({},
       omitUndefined(defaults || {}),
       omitUndefined(file),
@@ -51,6 +62,8 @@ export default function (..._args) {
       source: merged,
       pickBy: (value, key) => !config.unsetKeys.includes(key)
     })
+  } else {
+    throw new Error('Invalid argument. Need either a string, array or nothing')
   }
 
   return result
