@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import fs from 'fs-promise'
+import fs from 'fs-extra'
 import deepEqual from 'deeper'
 import ority from 'ority'
 import { error, keyPick } from '../utils'

@@ -18,7 +18,7 @@
     "auto-bind": "^0.1.0",
     "deeper": "^2.1.0",
     "enquirer": "^0.4.1",
-    "fs-promise": "^2.0.3",
+    "fs-extra": "^3.0.1",
     "is-empty": "^1.0.0",
     "is-number-like": "^1.0.7",
     "json5": "^0.5.1",

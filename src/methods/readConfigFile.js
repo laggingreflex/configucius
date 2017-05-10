@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import fs from 'fs-promise'
+import fs from 'fs-extra'
 import JSON from 'json5'
 import ority from 'ority'
 import { error } from '../utils'
