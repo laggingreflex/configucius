@@ -38,7 +38,21 @@ export default async function() {
   const ret = {}
   for (const key in options) {
     const opt = options[key]
-    const message = opt.message || opt.description || _.isString(opt.prompt) && opt.prompt || _.capitalize(_.startCase(key).toLowerCase())
+
+    let promptFnResult
+    if (typeof opt.prompt === 'function') {
+      promptFnResult = await opt.prompt(config.proxy || config);
+      if (!promptFnResult) {
+        continue;
+      }
+    }
+
+    const message = opt.message
+      || opt.description
+      || _.isString(opt.prompt) && opt.prompt
+      || _.isString(promptFnResult) && promptFnResult
+      || _.capitalize(_.startCase(key).toLowerCase())
+
     const method = opt.type === 'boolean' ? 'confirm'
       : opt.type === 'password' ? 'password'
       : 'input'
