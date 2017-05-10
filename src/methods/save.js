@@ -77,7 +77,10 @@ export default async function (...args) {
     /* There was an error saving settings to the specified `configFile` */ throw new
     Error(`Couldn't save to file "${configFile}". ` + error.message)
   }
-  config.configFileContents = contents
+
+  if (!opts.saveLossy) {
+    config.configFileContents = contents
+  }
 
   return { file: configFile, new: addedContent, previous: previousContents, deleted: deletedContent, changed: changedContent }
 }
