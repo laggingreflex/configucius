@@ -4,13 +4,8 @@ import deepEqual from 'deeper'
 import ority from 'ority'
 import { error, keyPick } from '../utils'
 
-export default async function (...args) {
-  let { key, opts } = ority(args, [{
-    key: ['string'],
-    opts: 'object'
-  }, {
-    key: ['string']
-  }, {
+export default async function(...args) {
+  let { opts } = ority(args, [{
     opts: 'object'
   }, {}])
   opts = opts || {}
@@ -22,12 +17,13 @@ export default async function (...args) {
     configFile = opts.configFile || config.getConfigFile()
   } catch (err) {
     error.throwWithMsg(`Cannot save: `, err)
+    return;
   }
 
   let contents = keyPick({
     args: arguments,
-    source: config.get(...[key, { ...opts, includeDefaults: false }].filter(Boolean)),
-    pickBy: (opt, key) => opts.all || _.get(config, `opts.options.${key}.save`)
+    source: config.get({ ...opts, includeDefaults: false }),
+    pickBy: (opt, key) => _.get(config, `opts.options.${key}.save`)
   })
 
   contents = _.pickBy(contents, a => _.isArray(a) || _.isString(a) ? a.length : true)
