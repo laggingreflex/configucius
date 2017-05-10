@@ -11,6 +11,9 @@
     "browser-sync": "browser-sync start --server coverage/lcov-report --files coverage/lcov-report/**/*.html",
     "index": "create-index src -ri --banner \"/* eslint-disable */\""
   },
+  "files": [
+    "index.js", "src", "dist"
+  ],
   "repository": "laggingreflex/configucius",
   "author": "laggingreflex",
   "dependencies": {
