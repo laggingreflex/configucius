@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import fs from 'fs-extra'
 import JSON from 'json5'
+import yaml from 'js-yaml'
 import ority from 'ority'
 import { error } from '../utils'
 
@@ -26,7 +27,7 @@ export default function() {
     return false
   }
 
-  let json, stats, nonEmpty, jsonError, requireError;
+  let json, stats, nonEmpty, jsonError, yamlError, requireError;
 
   try {
     stats = fs.statSync(configFile);
@@ -39,6 +40,9 @@ export default function() {
     const raw = fs.readFileSync(configFile);
     [jsonError, json] = tryParseJson(raw);
     if (!json) {
+      [yamlError, json] = tryParseYaml(raw);
+    }
+    if (!json) {
       [requireError, json] = tryRequire(configFile);
     }
   } else if (stats && stats.isDirectory()) {
@@ -50,6 +54,8 @@ export default function() {
     jsonError.message = `Couldn't parse JSON from {configFile: ${configFile}}: ` + jsonError.message
   } else if (requireError) {
     requireError.message = `Couldn't require {configFile: ${configFile}}: ` + requireError.message
+  } else if (yamlError) {
+    yamlError.message = `Couldn't parse YAML from {configFile: ${configFile}}: ` + yamlError.message
   }
 
   if (!json) {
@@ -86,6 +92,14 @@ export default function() {
 function tryParseJson(raw) {
   try {
     return [null, JSON.parse(raw)];
+  } catch (err) {
+    return [err];
+  }
+}
+
+function tryParseYaml(raw) {
+  try {
+    return [null, yaml.safeLoad(raw)];
   } catch (err) {
     return [err];
   }
