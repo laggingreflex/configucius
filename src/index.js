@@ -14,7 +14,7 @@ class Config {
 
     config.opts = opts
 
-    config.defaults = defaults
+    // config.defaults = defaults
 
     config.mergeOptions()
     config.processArgv()
