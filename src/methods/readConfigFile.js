@@ -39,7 +39,7 @@ export default function() {
     const raw = fs.readFileSync(configFile);
     [jsonError, json] = tryParseJson(raw);
     if (!json) {
-      [requireError, json] = tryRequire(raw);
+      [requireError, json] = tryRequire(configFile);
     }
   } else if (stats && stats.isDirectory()) {
     nonEmpty = true;
