@@ -41,6 +41,9 @@ export default function() {
     [jsonError, json] = tryParseJson(raw);
     if (!json) {
       [yamlError, json] = tryParseYaml(raw);
+      if (typeof json === 'string') {
+        json = null;
+      }
     }
     if (!json) {
       [requireError, json] = tryRequire(configFile);
