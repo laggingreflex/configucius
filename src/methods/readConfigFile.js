@@ -4,10 +4,10 @@ import JSON from 'json5'
 import ority from 'ority'
 import { error } from '../utils'
 
-export default function () {
+export default function() {
   const config = this
 
-  let {configFile, opts} = ority(arguments, [{
+  let { configFile, opts } = ority(arguments, [{
     configFile: 'string',
     opts: 'object'
   }, {
@@ -17,7 +17,7 @@ export default function () {
   }, {}])
 
   opts = opts || {}
-  configFile = configFile || opts.configFile || config.getConfigFile({silent: true})
+  configFile = configFile || opts.configFile || config.getConfigFile({ silent: true })
 
   if (typeof configFile !== 'string' || !configFile.length) {
     if (typeof config.configFileNotExistsFlag === 'undefined') {
@@ -26,31 +26,45 @@ export default function () {
     return false
   }
 
-  let raw, json
+  let json, stats, nonEmpty, jsonError, requireError;
 
   try {
-    raw = fs.readFileSync(configFile)
-  } catch (err) {
-    if (opts.silent || opts.silentReadFail) {
-      return
-    } else {
-      err.message = `Couldn't read from {configFile: ${configFile}}: ` + err.message
-      /* Config file doesn't exist but was forced to be read */ throw err
-    }
+    stats = fs.statSync(configFile);
+  } catch (error) {
+
   }
-  if (raw.length) {
-    try {
-      json = JSON.parse(raw)
-    } catch (err) {
-      if (opts.silent || opts.silentParseFail) {
-        return
+
+  if (stats && stats.isFile()) {
+    nonEmpty = true;
+    const raw = fs.readFileSync(configFile);
+    [jsonError, json] = tryParseJson(raw);
+    if (!json) {
+      [requireError, json] = tryRequire(raw);
+    }
+  } else if (stats && stats.isDirectory()) {
+    nonEmpty = true;
+    [requireError, json] = tryRequire(configFile);
+  }
+
+  if (jsonError) {
+    jsonError.message = `Couldn't parse JSON from {configFile: ${configFile}}: ` + jsonError.message
+  } else if (requireError) {
+    requireError.message = `Couldn't require {configFile: ${configFile}}: ` + requireError.message
+  }
+
+  if (!json) {
+    const error = jsonError || requireError;
+    if (error) {
+      if (nonEmpty) {
+        error.message = 'Non-empty config file contains invalid JSON or JS. ' + error.message;
+        throw error;
+      } else if (opts.silent || opts.silentParseFail) {
+        return;
       } else {
-        err.message = `Couldn't parse JSON from {configFile: ${configFile}}: ` + err.message
-        /* Non-empty config file contains invalid JSON */ throw err
+        error.message = `Couldn't find/parse {configFile: ${configFile}}. ` + error.message;
+        throw error;
       }
     }
-  } else {
-    console.warn('warning: empty config file, using "{}"')
   }
 
   if (opts.replace) {
@@ -66,4 +80,21 @@ export default function () {
   }
 
   return json
+}
+
+
+function tryParseJson(raw) {
+  try {
+    return [null, JSON.parse(raw)];
+  } catch (err) {
+    return [err];
+  }
+}
+
+function tryRequire(path) {
+  try {
+    return [null, require(path)];
+  } catch (err) {
+    return [err];
+  }
 }
