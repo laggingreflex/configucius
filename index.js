@@ -1,6 +1,6 @@
 const autobind = require('auto-bind')
 const defaults = require('./defaults')
-const * as methods = require('./methods')
+const methods = require('./methods')
 
 class Config {
   constructor (opts = {}) {

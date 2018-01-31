@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const * as prompt = require('../utils/prompt')
+const prompt = require('../utils/prompt')
 const ority = require('ority')
 
 export default async function() {
