@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const { orityKeysOpts } = require('.')
+const orityKeysOpts = require('./orityKeysOpts')
 
 module.exports = ({ args, source = {}, pickBy }) => {
   const { keys, opts } = orityKeysOpts(args)
