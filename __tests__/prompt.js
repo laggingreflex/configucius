@@ -1,6 +1,6 @@
-const Prompt = require('../src/methods/prompt')
+const Prompt = require('../methods/prompt')
 const { stub } = require('sinon')
-const Config = require('../src')
+const Config = require('..')
 
 describe('prompt', () => {
   let prompt

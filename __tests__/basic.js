@@ -1,4 +1,4 @@
-const Config = require('../src')
+const Config = require('..')
 
 describe('basic', () => {
   it('should be a function', () => {

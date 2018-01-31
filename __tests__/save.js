@@ -1,8 +1,8 @@
-const Save = require('../src/methods/save')
-const Read = require('../src/methods/readConfigFile')
+const Save = require('../methods/save')
+const Read = require('../methods/readConfigFile')
 const { stub } = require('sinon')
 const JSON = require('json5')
-const Config = require('../src')
+const Config = require('..')
 const path = require('path')
 const untildify = require('untildify')
 
