@@ -1,5 +1,5 @@
-import Enquirer from 'enquirer'
-import Password from 'prompt-password'
+const Enquirer = require('enquirer')
+const Password = require('prompt-password')
 
 const enquirer = new Enquirer()
 

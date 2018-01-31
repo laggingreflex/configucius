@@ -1,6 +1,6 @@
-import _ from 'lodash'
-import * as prompt from '../utils/prompt'
-import ority from 'ority'
+const _ = require('lodash')
+const * as prompt = require('../utils/prompt')
+const ority = require('ority')
 
 export default async function() {
   const config = this

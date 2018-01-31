@@ -1,7 +1,7 @@
-import _ from 'lodash'
-import Yargs from 'yargs'
-import arrify from 'arrify'
-import prompt from '../utils'
+const _ = require('lodash')
+const Yargs = require('yargs')
+const arrify = require('arrify')
+const prompt = require('../utils')
 
 export default function (fn) {
   const config = this

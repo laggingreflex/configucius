@@ -1,4 +1,4 @@
-import Enquirer from 'enquirer'
+const Enquirer = require('enquirer')
 
 const enquirer = new Enquirer()
 

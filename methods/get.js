@@ -1,5 +1,5 @@
-import _ from 'lodash'
-import ority from 'ority'
+const _ = require('lodash')
+const ority = require('ority')
 import {
   keyPick,
   omitUndefined,

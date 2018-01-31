@@ -1,9 +1,9 @@
-import _ from 'lodash'
-import fs from 'fs-extra'
-import JSON from 'json5'
-import yaml from 'js-yaml'
-import ority from 'ority'
-import { error } from '../utils'
+const _ = require('lodash')
+const fs = require('fs-extra')
+const JSON = require('json5')
+const yaml = require('js-yaml')
+const ority = require('ority')
+const { error } = require('../utils')
 
 export default function() {
   const config = this

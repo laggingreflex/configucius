@@ -1,4 +1,4 @@
-import Config from '../src'
+const Config = require('../src')
 
 describe('argv', () => {
   it('should remove redundant aliases', () => {

@@ -1,5 +1,5 @@
-import _ from 'lodash'
-import { orityKeysOpts } from '.'
+const _ = require('lodash')
+const { orityKeysOpts } = require('.')
 
 export default ({ args, source = {}, pickBy }) => {
   const { keys, opts } = orityKeysOpts(args)

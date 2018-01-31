@@ -1,5 +1,5 @@
-import path from 'path'
-import untildify from 'untildify'
+const path = require('path')
+const untildify = require('untildify')
 
 export default function (opts = {}) {
   const config = this

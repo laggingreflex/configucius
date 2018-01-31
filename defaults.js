@@ -1,4 +1,4 @@
-import readPkgUp from 'read-pkg-up'
+const readPkgUp = require('read-pkg-up')
 
 let parentPkg
 try {

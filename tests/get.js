@@ -1,4 +1,4 @@
-import Config from '../src'
+const Config = require('../src')
 
 describe('get', () => {
   it('should get with .get(key)', async() => {

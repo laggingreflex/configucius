@@ -1,5 +1,5 @@
-import ority from 'ority'
-import arrify from 'arrify'
+const ority = require('ority')
+const arrify = require('arrify')
 
 export default (_arguments, opts = []) => {
   const args = ority(_arguments, [{

@@ -4,7 +4,7 @@
 A wrapper around [yargs] with prompt and read/save-to-file capabilities.
 
 ```js
-import Config from 'configucius'
+const Config = require('configucius')
 
 const config = new Config({
     configFile: '~/.yourPackageName',

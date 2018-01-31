@@ -1,4 +1,4 @@
-import Config from '../src'
+const Config = require('../src')
 
 describe('basic', () => {
   it('should be a function', () => {

@@ -1,6 +1,6 @@
-import arrify from 'arrify'
-import _ from 'lodash'
-import { keyPick } from '../utils'
+const arrify = require('arrify')
+const _ = require('lodash')
+const { keyPick } = require('../utils')
 
 export default function () {
   const config = this

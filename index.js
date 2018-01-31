@@ -1,6 +1,6 @@
-import autobind from 'auto-bind'
-import defaults from './defaults'
-import * as methods from './methods'
+const autobind = require('auto-bind')
+const defaults = require('./defaults')
+const * as methods = require('./methods')
 
 class Config {
   constructor (opts = {}) {

@@ -1,5 +1,5 @@
-import _ from 'lodash'
-import { prompt } from '../utils'
+const _ = require('lodash')
+const { prompt } = require('../utils')
 
 export default async function (setting, message) {
   const config = this

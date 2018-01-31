@@ -1,5 +1,5 @@
-import arrify from 'arrify'
-import _ from 'lodash'
+const arrify = require('arrify')
+const _ = require('lodash')
 
 export default function () {
   const config = this

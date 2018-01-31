@@ -1,10 +1,10 @@
-import Save from '../src/methods/save'
-import Read from '../src/methods/readConfigFile'
-import { stub } from 'sinon'
-import JSON from 'json5'
-import Config from '../src'
-import path from 'path'
-import untildify from 'untildify'
+const Save = require('../src/methods/save')
+const Read = require('../src/methods/readConfigFile')
+const { stub } = require('sinon')
+const JSON = require('json5')
+const Config = require('../src')
+const path = require('path')
+const untildify = require('untildify')
 
 describe('save', () => {
   let fs = {}

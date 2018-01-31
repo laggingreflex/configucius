@@ -1,4 +1,4 @@
-import _ from 'lodash'
+const _ = require('lodash')
 
 export default function (argv = process.argv.slice(2)) {
   const config = this

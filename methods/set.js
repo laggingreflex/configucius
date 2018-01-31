@@ -1,5 +1,5 @@
-import _ from 'lodash'
-import isNumberLike from 'is-number-like'
+const _ = require('lodash')
+const isNumberLike = require('is-number-like')
 
 export default function (key, value) {
   const config = this

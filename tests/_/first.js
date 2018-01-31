@@ -1,7 +1,7 @@
-import chai from 'chai'
-import sinon from 'sinon-chai'
-import like from 'chai-like'
-import promise from 'chai-as-promised'
+const chai = require('chai')
+const sinon = require('sinon-chai')
+const like = require('chai-like')
+const promise = require('chai-as-promised')
 
 // chai
 chai.use(sinon)

@@ -1,4 +1,4 @@
-import isEmpty from 'is-empty'
+const isEmpty = require('is-empty')
 
 export default async function () {
   const config = this

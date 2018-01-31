@@ -1,8 +1,8 @@
-import _ from 'lodash'
-import fs from 'fs-extra'
-import deepEqual from 'deeper'
-import ority from 'ority'
-import { error, keyPick } from '../utils'
+const _ = require('lodash')
+const fs = require('fs-extra')
+const deepEqual = require('deeper')
+const ority = require('ority')
+const { error, keyPick } = require('../utils')
 
 export default async function(...args) {
   let { opts } = ority(args, [{

@@ -1,5 +1,5 @@
-import Enquirer from 'enquirer'
-import Confirm from 'prompt-confirm'
+const Enquirer = require('enquirer')
+const Confirm = require('prompt-confirm')
 
 const enquirer = new Enquirer()
 

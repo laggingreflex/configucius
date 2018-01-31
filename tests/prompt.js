@@ -1,6 +1,6 @@
-import Prompt from '../src/methods/prompt'
-import { stub } from 'sinon'
-import Config from '../src'
+const Prompt = require('../src/methods/prompt')
+const { stub } = require('sinon')
+const Config = require('../src')
 
 describe('prompt', () => {
   let prompt
