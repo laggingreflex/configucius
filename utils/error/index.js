@@ -1,6 +1,1 @@
-/* eslint-disable */
-
-// @create-index
-
-export throwWithMsg from './throwWithMsg.js';
-
+module.exports = require('export-dir')(__dirname)

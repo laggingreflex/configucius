@@ -1,28 +1,19 @@
 {
   "name": "configucius",
-  "version": "1.1.1",
-  "description": "config loader",
-  "main": "dist",
+  "version": "2.0.0-alpha",
+  "description": "Config loader",
+  "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && babel src -d dist --source-maps",
-    "lint": "eslint src tests",
-    "test": "NODE_ENV=test mochista --opts tests/_/mocha.opts",
-    "watch": "run-p \"build -- {@}\" \"test -- {@}\" -- \"--watch\"",
-    "browser-sync": "browser-sync start --server coverage/lcov-report --files coverage/lcov-report/**/*.html",
-    "index": "create-index src -ri --banner \"/* eslint-disable */\""
+    "lint": "eslint --fix",
+    "test": "jest"
   },
-  "files": [
-    "index.js",
-    "src",
-    "dist"
-  ],
   "repository": "laggingreflex/configucius",
-  "author": "laggingreflex",
   "dependencies": {
     "arrify": "^1.0.1",
     "auto-bind": "^0.1.0",
     "deeper": "^2.1.0",
     "enquirer": "^0.4.1",
+    "export-dir": "^0.1.2",
     "fs-extra": "^3.0.1",
     "is-empty": "^1.0.0",
     "is-number-like": "^1.0.7",
@@ -36,18 +27,13 @@
     "yargs": "^5.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-plugin-annotate-console-log": "^1.0.0",
-    "babel-plugin-rewire": "^1.0.0",
-    "babel-plugin-transform-export-default-name": "^2.0.3",
-    "babel-preset-es2015-node6": "^0.3.0",
-    "babel-preset-stage-0": "^6.16.0",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chai-like": "^0.1.10",
     "chokidar": "^1.6.1",
     "create-index": "^1.0.0",
     "eslint": "^3.8.1",
+    "jest": "^22.1.4",
     "mochista": "^0.3.0",
     "npm-run-all": "^3.1.1",
     "rimraf": "^2.5.4",
