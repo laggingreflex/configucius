@@ -5,7 +5,7 @@ const enquirer = new Enquirer()
 
 enquirer.register('confirm', Confirm)
 
-export default async(message, def) => {
+module.exports = async(message, def) => {
   const answer = (await enquirer.prompt({
     name: 'confirm',
     type: 'confirm',

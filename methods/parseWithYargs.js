@@ -3,7 +3,7 @@ const Yargs = require('yargs')
 const arrify = require('arrify')
 const prompt = require('../utils')
 
-export default function (fn) {
+module.exports = function (fn) {
   const config = this
   const opts = config.opts
 

@@ -1,6 +1,6 @@
 const { keyPick } = require('../utils')
 
-export default function (setting) {
+module.exports = function (setting) {
   const config = this
   return keyPick({
     args: arguments,

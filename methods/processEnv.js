@@ -1,4 +1,4 @@
-export default function () {
+module.exports = function () {
   const config = this
 
   config.env = config.parseWithYargs(yargs => yargs.env().parse([]))

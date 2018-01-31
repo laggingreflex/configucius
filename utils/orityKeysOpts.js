@@ -1,7 +1,7 @@
 const ority = require('ority')
 const arrify = require('arrify')
 
-export default (_arguments, opts = []) => {
+module.exports = (_arguments, opts = []) => {
   const args = ority(_arguments, [{
     key: ['string'],
     opts: 'object'

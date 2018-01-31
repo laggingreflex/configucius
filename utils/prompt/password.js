@@ -5,7 +5,7 @@ const enquirer = new Enquirer()
 
 enquirer.register('password', Password)
 
-export default async(message, def) => {
+module.exports = async(message, def) => {
   return (await enquirer.prompt({
     name: 'password',
     type: 'password',

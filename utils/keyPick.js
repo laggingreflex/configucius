@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const { orityKeysOpts } = require('.')
 
-export default ({ args, source = {}, pickBy }) => {
+module.exports = ({ args, source = {}, pickBy }) => {
   const { keys, opts } = orityKeysOpts(args)
 
   if (keys.length === 1) {

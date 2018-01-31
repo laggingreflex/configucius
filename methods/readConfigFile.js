@@ -5,7 +5,7 @@ const yaml = require('js-yaml')
 const ority = require('ority')
 const { error } = require('../utils')
 
-export default function() {
+module.exports = function() {
   const config = this
 
   let { configFile, opts } = ority(arguments, [{

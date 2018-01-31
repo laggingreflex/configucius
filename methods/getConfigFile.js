@@ -1,7 +1,7 @@
 const path = require('path')
 const untildify = require('untildify')
 
-export default function (opts = {}) {
+module.exports = function (opts = {}) {
   const config = this
 
   let configFile = config.get('configFile') || config.opts.configFile

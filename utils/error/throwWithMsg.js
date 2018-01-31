@@ -1,4 +1,4 @@
-export default (msg, err, extras) => {
+module.exports = (msg, err, extras) => {
   if (err) {
     err.message = msg + err.message
   } else {

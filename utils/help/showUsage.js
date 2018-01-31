@@ -1,4 +1,4 @@
-export default () => {
+module.exports = () => {
   console.log(`
     Usage:
       gfork <url>

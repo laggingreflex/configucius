@@ -2,7 +2,7 @@ const arrify = require('arrify')
 const _ = require('lodash')
 const { keyPick } = require('../utils')
 
-export default function () {
+module.exports = function () {
   const config = this
   return keyPick({
     args: arguments,

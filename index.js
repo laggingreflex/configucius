@@ -33,4 +33,4 @@ class Config {
 
 Object.assign(Config.prototype, methods)
 
-export default Config
+module.exports = Config

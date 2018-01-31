@@ -2,7 +2,7 @@ const _ = require('lodash')
 const prompt = require('../utils/prompt')
 const ority = require('ority')
 
-export default async function() {
+module.exports = async function() {
   const config = this
   const opts = config.opts
   let options = opts.options

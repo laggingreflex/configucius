@@ -1,5 +1,5 @@
 const _ = require('lodash')
 
-export default (options) => {
+module.exports = (options) => {
   return _.omitBy(options, _.isUndefined)
 }

@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-export default function (key) {
+module.exports = function (key) {
   const config = this
 
   if (!config.unsetKeys.includes(key)) {

@@ -1,4 +1,4 @@
-export default (errors) => {
+module.exports = (errors) => {
   if (errors instanceof Array) {
     console.error(`
       Errors:

@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-export default function () {
+module.exports = function () {
   const config = this
   const opts = config.opts
 

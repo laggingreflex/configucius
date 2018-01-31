@@ -15,7 +15,7 @@ const defaultHandler = {
   }
 }
 
-export default function (handler = defaultHandler) {
+module.exports = function (handler = defaultHandler) {
   if (typeof Proxy !== 'undefined' && !this.proxyEnabled) {
     const proxy = new Proxy(this, handler)
     this.proxy = proxy;

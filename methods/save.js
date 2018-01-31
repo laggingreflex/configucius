@@ -4,7 +4,7 @@ const deepEqual = require('deeper')
 const ority = require('ority')
 const { error, keyPick } = require('../utils')
 
-export default async function(...args) {
+module.exports = async function(...args) {
   let { opts } = ority(args, [{
     opts: 'object'
   }, {}])

@@ -2,7 +2,7 @@ const Enquirer = require('enquirer')
 
 const enquirer = new Enquirer()
 
-export default async(message, def) => {
+module.exports = async(message, def) => {
   return (await enquirer.prompt({
     name: 'input',
     message: message + ':',

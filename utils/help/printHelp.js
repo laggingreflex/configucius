@@ -1,6 +1,6 @@
 // const packageJson = require('../../package.json';)
 
-export default (exit) => {
+module.exports = (exit) => {
   console.log(`
     {packageJson.description}
 

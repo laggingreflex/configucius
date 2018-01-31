@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const { prompt } = require('../utils')
 
-export default async function (setting, message) {
+module.exports = async function (setting, message) {
   const config = this
   const prev = config[setting]
   message = message || _.capitalize(_.startCase(setting)) + ':'

@@ -47,4 +47,4 @@ defaults.help = {
   type: 'boolean'
 }
 
-export default defaults
+module.exports = defaults

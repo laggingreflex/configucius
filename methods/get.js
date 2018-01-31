@@ -6,7 +6,7 @@ const {
   returnFirstDefined
 } = require('../utils')
 
-export default function (..._args) {
+module.exports = function (..._args) {
   let { key, opts } = ority(_args, [{
     key: ['string'],
     opts: 'object'

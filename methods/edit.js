@@ -1,6 +1,6 @@
 const isEmpty = require('is-empty')
 
-export default async function () {
+module.exports = async function () {
   const config = this
 
   if (config.editConfig) {

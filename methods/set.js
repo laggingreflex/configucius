@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const isNumberLike = require('is-number-like')
 
-export default function (key, value) {
+module.exports = function (key, value) {
   const config = this
 
   if (typeof value === 'undefined') {

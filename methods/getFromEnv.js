@@ -1,6 +1,6 @@
 const { keyPick } = require('../utils')
 
-export default function () {
+module.exports = function () {
   const config = this
   const keys = config.getOptionKeys()
   return keyPick({
