@@ -1,10 +1,10 @@
 const _ = require('lodash')
 const ority = require('ority')
-import {
+const {
   keyPick,
   omitUndefined,
   returnFirstDefined
-} from '../utils'
+} = require('../utils')
 
 export default function (..._args) {
   let { key, opts } = ority(_args, [{
