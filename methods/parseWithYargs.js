@@ -25,7 +25,7 @@ module.exports = function (fn) {
   return args
 }
 
-export function getAliases (options) {
+const getAliases = exports.getAliases = (options) => {
   const aliases = []
   for (const key in options) {
     if (options[key].alias) {
@@ -35,7 +35,7 @@ export function getAliases (options) {
   return aliases
 }
 
-export function fixDuplicates (args, options) {
+const fixDuplicates = exports.fixDuplicates = (args, options) => {
   for (const key in args) {
     if (key !== '_' && _.isArray(args[key]) && _.get(options, `${key}.type`) !== 'array') {
       args[key] = args[key].pop()
@@ -44,7 +44,7 @@ export function fixDuplicates (args, options) {
   return args
 }
 
-export function fixBooleans (args, options) {
+const fixBooleans = exports.fixBooleans = (args, options) => {
   for (const key in args) {
     const val = args[key];
     if (val === false || undefined === val) {
@@ -54,7 +54,7 @@ export function fixBooleans (args, options) {
   return args
 }
 
-export function meetDemands (options) {
+const meetDemands = exports.meetDemands = (options) => {
   for (const key in options) {
     const opt = options[key]
     if ((opt.demand || opt.required) && opt.prompt) {
