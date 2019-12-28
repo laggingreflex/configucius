@@ -1,36 +1,7 @@
-const autobind = require('auto-bind')
-const defaults = require('./defaults')
-const methods = require('./methods')
+/** https://github.com/visionmedia/debug/blob/master/src/index.js */
 
-class Config {
-  constructor (opts = {}) {
-    autobind(this)
-
-    const config = this
-
-    config.config = {}
-    config.file = {}
-    config.unsetKeys = []
-
-    config.opts = opts
-
-    // config.defaults = defaults
-
-    config.mergeOptions()
-    config.processArgv()
-    config.processEnv()
-
-    if (config.get('help')) {
-      console.log('yeah', config.get('help'))
-      config.printHelp(true)
-    }
-
-    config.readConfigFile({ silentReadFail: true })
-
-    return this.enableProxy()
-  }
+if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
+  module.exports = require('./lib/browser.js');
+} else {
+  module.exports = require('./lib/node.js');
 }
-
-Object.assign(Config.prototype, methods)
-
-module.exports = Config

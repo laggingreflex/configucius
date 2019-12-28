@@ -4,41 +4,20 @@
   "description": "Config loader",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --fix",
-    "test": "jest"
+    "test": "mochista --require=require-proxy-mock"
   },
   "repository": "laggingreflex/configucius",
   "dependencies": {
-    "arrify": "^1.0.1",
-    "auto-bind": "^0.1.0",
-    "deeper": "^2.1.0",
-    "enquirer": "^0.4.1",
-    "export-dir": "^0.1.2",
-    "fs-extra": "^3.0.1",
-    "is-empty": "^1.0.0",
-    "is-number-like": "^1.0.7",
-    "js-yaml": "^3.9.1",
-    "json5": "^0.5.1",
-    "lodash": "^4.17.2",
-    "ority": "^0.3.3",
-    "prompt-confirm": "^0.2.1",
-    "prompt-password": "^0.1.1",
-    "untildify": "^3.0.2",
-    "yargs": "^5.0.0"
+    "dotenv": "^8.2.0",
+    "enquire-simple": "^2.0.0",
+    "fs-extra": "^8.1.0",
+    "untildify": "^4.0.0",
+    "yargs": "^15.0.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "chai-like": "^0.1.10",
-    "chokidar": "^1.6.1",
-    "create-index": "^1.0.0",
-    "eslint": "^3.8.1",
-    "jest": "^22.1.4",
-    "mochista": "^0.3.0",
-    "npm-run-all": "^3.1.1",
-    "rimraf": "^2.5.4",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0",
-    "standard": "^8.6.0"
+    "jest": "^24.9.0",
+    "mochista": "^0.22.0",
+    "require-proxy-mock": "^0.6.1",
+    "sinon": "^7.5.0"
   }
 }
