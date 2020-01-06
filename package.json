@@ -9,7 +9,7 @@
   "repository": "laggingreflex/configucius",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "enquire-simple": "^2.0.0",
+    "enquire-simple": "^2.1.0",
     "fs-extra": "^8.1.0",
     "untildify": "^4.0.0",
     "yargs": "^15.0.2"
