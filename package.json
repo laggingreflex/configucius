@@ -3,21 +3,8 @@
   "version": "4.0.1",
   "description": "Config loader",
   "main": "index.js",
-  "scripts": {
-    "test": "mochista --require=require-proxy-mock"
-  },
   "repository": "laggingreflex/configucius",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "enquire-simple": "^2.1.0",
-    "fs-extra": "^8.1.0",
-    "untildify": "^4.0.0",
-    "yargs": "^15.0.2"
-  },
-  "devDependencies": {
-    "jest": "^24.9.0",
-    "mochista": "^0.22.0",
-    "require-proxy-mock": "^0.6.1",
-    "sinon": "^7.5.0"
+    "enquire-simple": "^2.2.0"
   }
 }
