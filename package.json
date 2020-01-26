@@ -1,6 +1,6 @@
 {
   "name": "configucius",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Config loader",
   "main": "index.js",
   "repository": "laggingreflex/configucius",
